@@ -1,11 +1,8 @@
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
 import 'package:personal_portfolio_admin_app/controller/social_account_controller.dart';
-
 import '../../../../constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

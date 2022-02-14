@@ -5,6 +5,7 @@ import '../constants.dart';
 
 class ProfileController extends GetxController {
   static ProfileController instance = Get.find();
+
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});
   Map<String, dynamic> get user => _user.value;
 
@@ -20,10 +21,13 @@ class ProfileController extends GetxController {
     final userData = userDoc.data()! as dynamic;
     String name = userData['name'];
     String profilePhoto = userData['profilePhoto'];
+    String cv = userData['cv'];
+    String coverphoto = userData['coverphoto'];
     String age = userData['age'];
     String city = userData['city'];
     String description = userData['description'];
     String residence = userData['residence'];
+    String heading = userData['heading'];
 
     _user.value = {
       'name': name,
@@ -32,6 +36,9 @@ class ProfileController extends GetxController {
       'residence': residence,
       'description': description,
       'profilePhoto': profilePhoto,
+      'cv': cv,
+      'coverphoto': coverphoto,
+      'heading': heading,
     };
     update();
   }

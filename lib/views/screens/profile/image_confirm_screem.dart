@@ -9,8 +9,12 @@ import '../../../constants.dart';
 class ImageConfirmScreen extends StatelessWidget {
   final File imagefile;
   final String imagePath;
+  final VoidCallback ontap;
   ImageConfirmScreen(
-      {Key? key, required this.imagefile, required this.imagePath})
+      {Key? key,
+      required this.imagefile,
+      required this.imagePath,
+      required this.ontap})
       : super(key: key);
 
   final PhotoController profileController = Get.put(PhotoController());
@@ -43,9 +47,7 @@ class ImageConfirmScreen extends StatelessWidget {
                 center: Text(photocontroller.percentage.toString()),
               ),
               InkWell(
-                onTap: () => {
-                  photocontroller.updateProfilePic(imagefile),
-                },
+                onTap: ontap,
                 child: Container(
                   margin: const EdgeInsets.all(20),
                   padding: const EdgeInsets.symmetric(

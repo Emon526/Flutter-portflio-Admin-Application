@@ -37,6 +37,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => ImageConfirmScreen(
+            ontap: () {
+              photocontroller.updateProfilePic(File(image.path));
+            },
             imagefile: File(image.path),
             imagePath: image.path,
           ),

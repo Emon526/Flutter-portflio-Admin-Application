@@ -6,6 +6,7 @@ import 'package:personal_portfolio_admin_app/controller/auth_controller.dart';
 import 'package:personal_portfolio_admin_app/controller/photo_controller.dart';
 import 'package:personal_portfolio_admin_app/controller/profile_controller.dart';
 import 'package:personal_portfolio_admin_app/controller/skill_controller.dart';
+import 'package:personal_portfolio_admin_app/views/screens/heading/heading.dart';
 import 'package:personal_portfolio_admin_app/views/screens/website_screen.dart';
 import 'package:personal_portfolio_admin_app/views/screens/statics/statics_screen.dart';
 
@@ -14,7 +15,7 @@ import 'views/screens/profile/profile_screen.dart';
 List pages = [
   const WebsiteView(),
   const Text('Recomond Screen'),
-  const Text('Heading Screen'),
+  Heading(),
   const StaticsScreen(),
   const Text('Project Screen'),
   ProfileScreen(
