@@ -9,12 +9,6 @@ class WebsiteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: darkColor,
-      //   elevation: 0,
-      //   centerTitle: true,
-      //   title: const Text('Website View'),
-      // ),
       body: SafeArea(
         child: WebView(
           allowsInlineMediaPlayback: true,
