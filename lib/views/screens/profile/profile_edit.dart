@@ -35,10 +35,6 @@ class _EditProfileState extends State<EditProfile> {
 
   final TextEditingController _ageController = TextEditingController();
 
-  // final TextEditingController _emailController = TextEditingController();
-
-  // final TextEditingController _passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -117,16 +113,6 @@ class _EditProfileState extends State<EditProfile> {
                       labelText: 'Age',
                       hintText: widget.age,
                     ),
-                    // TextInputField(
-                    //   controller: _emailController,
-                    //   iconData: Icons.person,
-                    //   labelText: controller.user['description'] ??'Email',
-                    // ),
-                    // TextInputField(
-                    //   controller: _passwordController,
-                    //   iconData: Icons.person,
-                    //   labelText: 'Password',
-                    // ),
                   ],
                 ),
               ),

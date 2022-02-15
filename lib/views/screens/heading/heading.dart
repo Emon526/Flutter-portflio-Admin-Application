@@ -55,7 +55,6 @@ class Heading extends StatelessWidget {
           children: [
             TextField(
               controller: _nameController,
-              // keyboardType: TextInputType.text,
               maxLines: 1,
               decoration: InputDecoration(
                 labelText: namelabeltext,
@@ -126,8 +125,6 @@ class Heading extends StatelessWidget {
                         return CachedNetworkImage(
                           fit: BoxFit.cover,
                           imageUrl: profilecontroller.user['coverphoto'],
-                          // height: 150,
-                          // width: 150,
                           placeholder: (context, url) =>
                               const CircularProgressIndicator(),
                           errorWidget: (context, url, error) =>

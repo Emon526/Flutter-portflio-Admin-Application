@@ -51,7 +51,7 @@ class _StaticsScreenState extends State<StaticsScreen> {
               const SizedBox(
                 height: 30,
               ),
-              const CvWidget(),
+              CvWidget(),
               // const SizedBox(
               //   height: 30,
               // )

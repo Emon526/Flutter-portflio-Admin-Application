@@ -9,23 +9,18 @@ import 'package:personal_portfolio_admin_app/controller/cv_controller.dart';
 
 import '../../../../constants.dart';
 
-class PdfViewWidget extends StatefulWidget {
+class PdfViewWidget extends StatelessWidget {
   final File file;
   final bool uploaded;
 
-  const PdfViewWidget({Key? key, required this.file, required this.uploaded})
+  PdfViewWidget({Key? key, required this.file, required this.uploaded})
       : super(key: key);
 
-  @override
-  State<PdfViewWidget> createState() => _PdfViewWidgetState();
-}
-
-class _PdfViewWidgetState extends State<PdfViewWidget> {
   final CvController cvController = CvController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final name = basename(widget.file.path);
+    final name = basename(file.path);
 
     return Scaffold(
       appBar: AppBar(
@@ -39,15 +34,15 @@ class _PdfViewWidgetState extends State<PdfViewWidget> {
             Stack(
               children: [
                 PDFView(
-                  filePath: widget.file.path,
+                  filePath: file.path,
                 ),
-                widget.uploaded
+                uploaded
                     ? Positioned(
                         bottom: size.height * 0.03,
                         left: size.width / 4,
                         child: InkWell(
                           onTap: () {
-                            cvController.updateCv(widget.file);
+                            cvController.updateCv(file);
                           },
                           child: Container(
                             alignment: Alignment.center,

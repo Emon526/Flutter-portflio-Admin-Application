@@ -7,14 +7,10 @@ import 'package:personal_portfolio_admin_app/views/screens/statics/widgets/pdf_v
 
 import '../../../../constants.dart';
 
-class CvWidget extends StatefulWidget {
-  const CvWidget({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class CvWidget extends StatelessWidget {
+  CvWidget({Key? key}) : super(key: key);
 
-  @override
-  State<CvWidget> createState() => _CvWidgetState();
-}
-
-class _CvWidgetState extends State<CvWidget> {
   final CvController cvController = CvController();
 
   File? file;

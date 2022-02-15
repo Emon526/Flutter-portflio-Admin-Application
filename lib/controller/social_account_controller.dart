@@ -40,12 +40,6 @@ class SocialAccountController extends GetxController {
         .child(firebaseAuth.currentUser!.uid);
     UploadTask uploadTask = ref.putFile(image);
 
-    // uploadTask.snapshotEvents.listen((event) async {
-    //   final progress =
-    //       ((event.bytesTransferred.toDouble() / event.totalBytes.toDouble()) *
-    //               100)
-    //           .roundToDouble();
-    // });
     TaskSnapshot snap = await uploadTask;
     String downloadUrl = await snap.ref.getDownloadURL();
     return downloadUrl;
