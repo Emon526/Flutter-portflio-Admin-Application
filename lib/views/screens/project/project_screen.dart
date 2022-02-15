@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:personal_portfolio_admin_app/controller/project_controller.dart';
 import 'package:personal_portfolio_admin_app/controller/recommendation_controller.dart';
 
 import '../../../constants.dart';
 
-class RecommendationScreen extends StatelessWidget {
-  RecommendationScreen({Key? key}) : super(key: key);
+class ProjectScreen extends StatelessWidget {
+  ProjectScreen({Key? key}) : super(key: key);
 
-  final RecommendationController recommendationController =
-      Get.put(RecommendationController());
+  final ProjectController projectController = Get.put(ProjectController());
 
-  final TextEditingController _recomonderNameController =
+  final TextEditingController _projectNameController = TextEditingController();
+  final TextEditingController _projectDescriptionController =
       TextEditingController();
-  final TextEditingController _platformNameController = TextEditingController();
-  final TextEditingController _reviewController = TextEditingController();
-  Future<void> adddialog(
-      {required Function() ontap,
-      required String title,
-      required String recommendernamelabeltext,
-      required String platformnamelabeltext,
-      required String reviewlabelText}) async {
+  Future<void> adddialog({
+    required Function() ontap,
+    required String title,
+    required String projectNamelabeltext,
+    required String projectDescriptionlabeltext,
+  }) async {
     return Get.defaultDialog(
       titlePadding: const EdgeInsets.only(top: 30),
       barrierDismissible: true,
@@ -55,11 +54,10 @@ class RecommendationScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
-              controller: _recomonderNameController,
+              controller: _projectNameController,
               keyboardType: TextInputType.text,
-              maxLines: 1,
               decoration: InputDecoration(
-                labelText: recommendernamelabeltext,
+                labelText: projectNamelabeltext,
                 focusedBorder: UnderlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
@@ -72,24 +70,10 @@ class RecommendationScreen extends StatelessWidget {
               height: 10.0,
             ),
             TextField(
-              controller: _platformNameController,
-              keyboardType: TextInputType.text,
-              maxLines: 1,
-              decoration: InputDecoration(
-                labelText: platformnamelabeltext,
-                focusedBorder: UnderlineInputBorder(
-                  borderRadius: BorderRadius.circular(5),
-                  borderSide: const BorderSide(
-                    color: borderColor,
-                  ),
-                ),
-              ),
-            ),
-            TextField(
-              controller: _reviewController,
+              controller: _projectDescriptionController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: reviewlabelText,
+                labelText: projectDescriptionlabeltext,
                 focusedBorder: UnderlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
@@ -111,25 +95,24 @@ class RecommendationScreen extends StatelessWidget {
         backgroundColor: darkColor,
         elevation: 0,
         centerTitle: true,
-        title: const Text('Recommendations'),
+        title: const Text('Projects'),
         actions: [
           Center(
             widthFactor: 2.5,
             child: InkWell(
               onTap: () => adddialog(
-                  ontap: () {
-                    recommendationController.addRecommendation(
-                        _recomonderNameController.text.trim(),
-                        _platformNameController.text.trim(),
-                        _reviewController.text.trim());
-                    _recomonderNameController.clear();
-                    _platformNameController.clear();
-                    _reviewController.clear();
-                  },
-                  title: 'Add Recommendation',
-                  recommendernamelabeltext: 'Recommender Name',
-                  platformnamelabeltext: 'Platform Name',
-                  reviewlabelText: "Review"),
+                ontap: () {
+                  projectController.addProject(
+                    _projectNameController.text.trim(),
+                    _projectDescriptionController.text.trim(),
+                  );
+                  _projectNameController.clear();
+                  _projectDescriptionController.clear();
+                },
+                title: 'Add project',
+                projectNamelabeltext: 'Project Name',
+                projectDescriptionlabeltext: 'Project Description',
+              ),
               child: const Icon(Icons.add),
             ),
           )
@@ -145,9 +128,9 @@ class RecommendationScreen extends StatelessWidget {
             physics:
                 const ScrollPhysics(parent: NeverScrollableScrollPhysics()),
             shrinkWrap: true,
-            itemCount: recommendationController.recommendation.length,
+            itemCount: projectController.projects.length,
             itemBuilder: (context, index) {
-              final data = recommendationController.recommendation[index];
+              final data = projectController.projects[index];
               return Container(
                   padding: const EdgeInsets.all(10),
                   color: secondaryColor,
@@ -159,7 +142,8 @@ class RecommendationScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              data.recommendarName.toUpperCase(),
+                              data.projectName,
+                              maxLines: 2,
                               style: const TextStyle(
                                 fontSize: 18,
                                 color: primaryColor,
@@ -170,8 +154,8 @@ class RecommendationScreen extends StatelessWidget {
                             width: 10,
                           ),
                           InkWell(
-                            onTap: () => recommendationController
-                                .deleteRecommendation(data.uid),
+                            onTap: () =>
+                                projectController.deleteProject(data.uid),
                             child: const Icon(Icons.delete_outlined),
                           )
                         ],
@@ -180,7 +164,7 @@ class RecommendationScreen extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        data.platfrom.toUpperCase(),
+                        data.projectDescription,
                         style: const TextStyle(
                           fontSize: 16,
                           color: bodyTextColor,
@@ -189,18 +173,6 @@ class RecommendationScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Text(
-                        data.review,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          color: bodyTextColor,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      )
                     ],
                   ));
             },

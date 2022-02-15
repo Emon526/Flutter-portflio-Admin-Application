@@ -19,7 +19,7 @@ class WebsiteView extends StatelessWidget {
         allowsInlineMediaPlayback: true,
         backgroundColor: darkColor,
         zoomEnabled: false,
-        initialUrl: 'https://youtube.com',
+        initialUrl: 'https://google.com',
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );

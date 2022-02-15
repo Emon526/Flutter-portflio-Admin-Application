@@ -7,6 +7,7 @@ import 'package:personal_portfolio_admin_app/controller/photo_controller.dart';
 import 'package:personal_portfolio_admin_app/controller/profile_controller.dart';
 import 'package:personal_portfolio_admin_app/controller/skill_controller.dart';
 import 'package:personal_portfolio_admin_app/views/screens/heading/heading.dart';
+import 'package:personal_portfolio_admin_app/views/screens/project/project_screen.dart';
 import 'package:personal_portfolio_admin_app/views/screens/recomondation/recomondation_screen.dart';
 import 'package:personal_portfolio_admin_app/views/screens/website_screen.dart';
 import 'package:personal_portfolio_admin_app/views/screens/statics/statics_screen.dart';
@@ -18,7 +19,7 @@ List pages = [
   RecommendationScreen(),
   Heading(),
   const StaticsScreen(),
-  const Text('Project Screen'),
+  ProjectScreen(),
   ProfileScreen(
     uid: authController.user.uid,
   ),

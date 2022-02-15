@@ -110,7 +110,7 @@ class Heading extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
-          vertical: 20,
+          vertical: 10,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +121,7 @@ class Heading extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(10),
                       child: Obx(() {
                         return CachedNetworkImage(
                           fit: BoxFit.cover,
